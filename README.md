@@ -18,4 +18,6 @@ https://godbolt.org/
 
 https://stackoverflow.com/questions/38552116/how-to-remove-noise-from-gcc-clang-assembly-output
 
+online assembly thing that is super useful. This is basically what I wanted to do, and this is SO built out.....
+https://godbolt.org/
 
