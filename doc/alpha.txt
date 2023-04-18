@@ -1,8 +1,9 @@
 
-alpha.nvim is a plugin for demo purpose. Development is in progress.
+assembly_peek.nvim is a plugin that I am designing to allow you to peek into assembly language versions of 
+your code during development. I would like this to be useful for learning, specifically when testing out
+if your code is using clever assembly logic.
 
-To find out more:
-https://github.com/alpha2phi/alpha.nvim
+https://github.com/aidansorensen/assembly_peek.nvim
 
   :h AlphaHelloWorld
 
