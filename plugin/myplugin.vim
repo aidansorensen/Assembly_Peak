@@ -4,7 +4,7 @@ let s:save_cpo = &cpo
 set cpo&vim
 
 
-command! Whid lua require 'whid'.whid()
+command! Whid lua require 'hello/rustsyscall'.whid()
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
