@@ -60,7 +60,7 @@ end
 
 
 
-ocal function update_view(direction)
+local function update_view(direction)
   api.nvim_buf_set_option(buf, 'modifiable', true)
   position = position + direction
   if position < 0 then position = 0 end
