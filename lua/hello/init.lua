@@ -1,2 +1,2 @@
-local hello = require('hello.helloworld')
+local hello = require('hello.rustsyscall')
 return hello
