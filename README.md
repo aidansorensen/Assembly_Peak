@@ -18,26 +18,19 @@ https://godbolt.org/
 
 https://stackoverflow.com/questions/38552116/how-to-remove-noise-from-gcc-clang-assembly-output
 
-online assembly thing that is super useful. This is basically what I wanted to do, and this is SO built out.....
-https://godbolt.org/
-
-#### ideas for using capstone:
-- First, I want to use the rust binding for capstone since I want to.
-- Since the rust binding has a convenient cargo installation, I have been using that to familiarize myself with
-
-##### Steps
-1. Write rust function that can use capstone to read bytecode and spit out assembly
-2. make it callable via plugin
-3. Next, need to find a way to compile source code, then find the exact bytes that correspond to part of the code that we want to examimne
-4. Take those bytes and put them in some kind of buffer/variable, and pass it to the rust function to compile and run.
 
 
-Thoughts on the process:
-it might make more sense to take the selected code, put it into a rust file that has a main or something, and then compile it. 
-That way, instead of compiling the whole project or whatever that you are working on, it actually performs
-JUST the calculation on the smaller amount of code. This seems like a potentially bad idea though, because taking code
-snippets and compiling them without errors seems nontrivial.
+#### For Professor Hawkins:
+1. clone fizzbuzz_for_testing
+2. if you want to test it in neovim without setting up package manager or configuring neovim at all, here are the steps:
+  - clone assemblypeek
+  - download neovim, any version above 0.5 should do so a generic install is fine
+  - cd into fizzbuzz_for_testing/fizzbuzz/
+  - open neovim with this command: "nvim --cmd "set rtp+=$(dir)"    (where dir is the local directory of my repo assemblypeek. for example: (/home/aidan/dev/assemblypeek)
+  - this command basically opens neovim normally, but sets the runtime path to that directory, so it should be able to find the plugin automatically. 
+  - type :lua require("assemblypeek.ui").toggle_quick_menu() into neovim
+  - this will pull up a floating window with the options of functions that can be disassembled with cargo asm. you can choose which one, then press ENTER (<CR>)
+  - this will open a terminal that runs the asm command and should display just the assembly for that function.
+3. If you do have neovim set up and have a package manager, just link my repo up to the package manager and you don't even have to clone assemblypeek.
 
-https://medium.com/journey-to-rust/viewing-assembly-for-rust-function-d4870baad941
-this article is doing something more similar to what I want to do. I don't actually think capstone is necessary...
 
