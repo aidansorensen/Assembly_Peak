@@ -1,4 +1,5 @@
 -- local assemblypeek = require("assemblypeek")
+local popup = require("plenary.popup")
 local M = {}
 
 asmpeek_win_id = nil
@@ -9,9 +10,9 @@ local function close_menu(force_save)
     force_save = force_save or false
     -- local global_config = harpoon.get_global_settings()
 
-    if global_config.save_on_toggle or force_save then
-        require("assemblypeek.ui").on_menu_save()
-    end
+    -- if global_config.save_on_toggle or force_save then
+    --     require("assemblypeek.ui").on_menu_save()
+    -- end
 
     vim.api.nvim_win_close(asmpeek_win_id, true)
 
@@ -21,11 +22,12 @@ end
 
 
 local function create_window()
-    local width = config.width or 60
-    local height = config.height or 10
+    -- local width = config.width or 60
+    -- local height = config.height or 10
     
-    local borderchars = config.borderchars
-        or { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
+    local width = 60
+    local height = 10
+    local borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" }
 
     local bufnr = vim.api.nvim_create_buf(false, false)
     
@@ -82,8 +84,8 @@ function M.toggle_quick_menu()
     -- end
 
     vim.api.nvim_win_set_option(asmpeek_win_id, "number", true)
-    vim.api.nvim_buf_set_name(asmpeek_win_id, "harpoon-menu")
-    vim.api.nvim_buf_set_lines(asmpeek_win_id, 0, #contents, false, contents)
+    vim.api.nvim_buf_set_name(asmpeek_bufh, "harpoon-menu")
+    vim.api.nvim_buf_set_lines(asmpeek_bufh, 0, #contents, false, contents)
     vim.api.nvim_buf_set_option(asmpeek_bufh, "filetype", "harpoon")
     vim.api.nvim_buf_set_option(asmpeek_bufh, "buftype", "acwrite")
     vim.api.nvim_buf_set_option(asmpeek_bufh, "bufhidden", "delete")
@@ -132,3 +134,5 @@ function M.toggle_quick_menu()
         "autocmd BufLeave <buffer> ++nested ++once silent lua require('assemblypeek.ui').toggle_quick_menu()"
     )
 end
+
+return M
