@@ -18,8 +18,6 @@ end
 
 
 local function create_window()
-    -- local width = config.width or 60
-    -- local height = config.height or 10
     
     local width = 60
     local height = 10
@@ -50,34 +48,11 @@ function M.toggle_quick_menu()
         return
     end
 
-    -- local curr_file = utils.normalize_path(vim.api.nvim_buf_get_name(0))
-    -- vim.cmd(
-    --     string.format(
-    --         "autocmd Filetype harpoon "
-    --             .. "let path = '%s' | call clearmatches() | "
-    --             -- move the cursor to the line containing the current filename
-    --             .. "call search('\\V'.path.'\\$') | "
-    --             -- add a hl group to that line
-    --             .. "call matchadd('HarpoonCurrentFile', '\\V'.path.'\\$')",
-    --         curr_file:gsub("\\", "\\\\")
-    --     )
-    -- )
-
     local win_info = create_window()
-    -- local contents = {"fizzbuzz::fizz", "fizzbuzz:main"}
-    -- local global_config = harpoon.get_global_settings()
-
 
     asmpeek_win_id = win_info.win_id
     asmpeek_bufh = win_info.bufnr
 
-    -- for idx = 1, Marked.get_length() do
-    --     local file = Marked.get_marked_file_name(idx)
-    --     if file == "" then
-    --         file = "(empty)"
-    --     end
-    --     contents[idx] = string.format("%s", file)
-    -- end
 
     vim.api.nvim_win_set_option(asmpeek_win_id, "number", true)
     vim.api.nvim_buf_set_name(asmpeek_bufh, "harpoon-menu")
@@ -106,26 +81,6 @@ function M.toggle_quick_menu()
         "<Cmd>lua require('assemblypeek.ui').select_menu_item()<CR>",
         {}
     )
-    -- vim.cmd(
-    --     string.format(
-    --         "autocmd BufWriteCmd <buffer=%s> lua require('harpoon.ui').on_menu_save()",
-    --         Harpoon_bufh
-    --     )
-    -- )
-    -- if global_config.save_on_change then
-    --     vim.cmd(
-    --         string.format(
-    --             "autocmd TextChanged,TextChangedI <buffer=%s> lua require('harpoon.ui').on_menu_save()",
-    --             Harpoon_bufh
-    --         )
-    --     )
-    -- end
-    -- vim.cmd(
-    --     string.format(
-    --         "autocmd BufModifiedSet <buffer=%s> set nomodified",
-    --         Harpoon_bufh
-    --     )
-    -- )
     vim.cmd(
         "autocmd BufLeave <buffer> ++nested ++once silent lua require('assemblypeek.ui').toggle_quick_menu()"
     )
