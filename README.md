@@ -21,16 +21,16 @@ https://stackoverflow.com/questions/38552116/how-to-remove-noise-from-gcc-clang-
 
 
 #### For Professor Hawkins:
-1. clone fizzbuzz_for_testing
-2. if you want to test it in neovim without setting up package manager or configuring neovim at all, here are the steps:
-  - clone assemblypeek
-  - download neovim, any version above 0.5 should do so a generic install is fine
-  - cd into fizzbuzz_for_testing/fizzbuzz/
-  - open neovim with this command: "nvim --cmd "set rtp+=$(dir)"    (where dir is the local directory of my repo assemblypeek. for example: (/home/aidan/dev/assemblypeek)
-  - this command basically opens neovim normally, but sets the runtime path to that directory, so it should be able to find the plugin automatically. 
-  - type :lua require("assemblypeek.ui").toggle_quick_menu() into neovim
-  - this will pull up a floating window with the options of functions that can be disassembled with cargo asm. you can choose which one, then press ENTER (<CR>)
-  - this will open a terminal that runs the asm command and should display just the assembly for that function.
-3. If you do have neovim set up and have a package manager, just link my repo up to the package manager and you don't even have to clone assemblypeek.
+- clone fizzbuzz_for_testing
+- if you want to test it in neovim without setting up package manager or configuring neovim at all, here are the steps:
+    - clone assemblypeek
+    - download neovim, any version above 0.5 should do so a generic install is fine
+    - cd into fizzbuzz_for_testing/fizzbuzz/
+    - open neovim with this command: "nvim --cmd "set rtp+=$(dir)"    (where dir is the local directory of my repo assemblypeek. for example: (/home/aidan/dev/assemblypeek)
+    - this command basically opens neovim normally, but sets the runtime path to that directory, so it should be able to find the plugin automatically. 
+    - type :lua require("assemblypeek.ui").toggle_quick_menu() into neovim
+    - this will pull up a floating window with the options of functions that can be disassembled with cargo asm. you can choose which one, then press ENTER (<CR>)
+    - this will open a terminal that runs the asm command and should display just the assembly for that function.
+- If you do have neovim set up and have a package manager, just link my repo up to the package manager and you don't even have to clone assemblypeek.
 
 
