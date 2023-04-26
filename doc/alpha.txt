@@ -5,7 +5,9 @@ if your code is using clever assembly logic.
 
 https://github.com/aidansorensen/assembly_peek.nvim
 
-  :h AlphaHelloWorld
 
-AlphaHelloWorld                                                *AlphaHelloWorld*
-    Just say "Hello world!!"
+
+to call floating window that displays functions that can be printed:
+:lua require("assemblypeek.ui").toggle_quick_menu()
+
+

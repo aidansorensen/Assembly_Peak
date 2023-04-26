@@ -1,18 +1,14 @@
--- local assemblypeek = require("assemblypeek")
+-- local assemblypeek = require("assemblypeek.utils")
 local popup = require("plenary.popup")
 local M = {}
 
 asmpeek_win_id = nil
 asmpeek_bufh = nil
 
+contents = {"fizzbuzz::fizz", "fizzbuzz::main"}
 
 local function close_menu(force_save)
     force_save = force_save or false
-    -- local global_config = harpoon.get_global_settings()
-
-    -- if global_config.save_on_toggle or force_save then
-    --     require("assemblypeek.ui").on_menu_save()
-    -- end
 
     vim.api.nvim_win_close(asmpeek_win_id, true)
 
@@ -68,7 +64,7 @@ function M.toggle_quick_menu()
     -- )
 
     local win_info = create_window()
-    local contents = {}
+    -- local contents = {"fizzbuzz::fizz", "fizzbuzz:main"}
     -- local global_config = harpoon.get_global_settings()
 
 
@@ -103,13 +99,13 @@ function M.toggle_quick_menu()
         "<Cmd>lua require('assemblypeek.ui').toggle_quick_menu()<CR>",
         { silent = true }
     )
-    -- vim.api.nvim_buf_set_keymap(
-    --     asmpeek_bufh,
-    --     "n",
-    --     "<CR>",
-    --     "<Cmd>lua require('assemblypeek.ui').select_menu_item()<CR>",
-    --     {}
-    -- )
+    vim.api.nvim_buf_set_keymap(
+        asmpeek_bufh,
+        "n",
+        "<CR>",
+        "<Cmd>lua require('assemblypeek.ui').select_menu_item()<CR>",
+        {}
+    )
     -- vim.cmd(
     --     string.format(
     --         "autocmd BufWriteCmd <buffer=%s> lua require('harpoon.ui').on_menu_save()",
@@ -134,5 +130,14 @@ function M.toggle_quick_menu()
         "autocmd BufLeave <buffer> ++nested ++once silent lua require('assemblypeek.ui').toggle_quick_menu()"
     )
 end
+
+function M.select_menu_item()
+    local idx = vim.fn.line(".")
+    close_menu(true)
+    print(idx)
+    require('assemblypeek.utils').show_assembly(contents[idx])
+end
+
+
 
 return M
